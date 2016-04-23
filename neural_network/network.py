@@ -38,18 +38,24 @@ def buildTrainingDataSet(inputSize, outputSize, dictionary):
 
 
 dictionary = []
-with open('dict.txt') as f:
-  for word in f.readlines():
-    dictionary.append(word[:-1])
+with open('training_data/training_set.txt') as f:
+  S = set()
+  for line in f.readlines():
+    line = line[:-1]
+    for word in line.split():
+      S.add(word)
+  dictionary = sorted(list(S))
 
-layers = [43137, 1000, 5]
+print(dictionary)
+
+layers = [len(dictionary), len(dictionary)*2, 5]
 net = buildNetwork(*layers, bias=True)
 ds = buildTrainingDataSet(len(dictionary), len(emojis), dictionary)
 trainer = BackpropTrainer(net, ds)
-print("before")
-trainer.train()
-print("after")
+for i in range(100):
+  print("before")
+  error = trainer.train()
+  print(error)
+  print("after")
 with open("net.p", "wb") as f:
   pickle.dump(net, f)
-with open("tra.p", "wb") as f:
-  pickle.dump(trainer, f)
