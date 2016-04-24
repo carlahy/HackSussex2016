@@ -5,6 +5,7 @@ var express = require('express'),
 	io = require('socket.io').listen(server),
 	nicknames = [];
 
+app.use('/static', express.static(__dirname + '/public'));
 var PythonShell = require('python-shell');
 
 server.listen(8080);
@@ -33,7 +34,6 @@ io.sockets.on('connection', function(socket) {
 			callback(true);
 			socket.nickname = data;
 			nicknames.push(socket.nickname);
-			updateNicknames();
 		}
 	});
 
@@ -45,14 +45,9 @@ io.sockets.on('connection', function(socket) {
 		//io.sockets.emit('new message', {msg: data, nick: socket.nickname});
 	});
 
-	function updateNicknames() {
-		io.sockets.emit('usernames', nicknames);
-	};
-
 	socket.on('disconnect', function(data){
 		if(!socket.nickname) return;
 		nicknames.splice(nicknames.indexOf(socket.nickname), 1);
-		updateNicknames();
 	});
 });
 

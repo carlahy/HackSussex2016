@@ -1,5 +1,5 @@
 U+1F600 	happy
-U+1F641 	sad
+U+1F61E 	sad
 U+2764		love
 U+1F629		tired
 U+1F62F		surprised

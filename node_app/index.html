@@ -4,8 +4,18 @@
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
 	<style type="text/css">
-		body {
-			background-color: #e6fff7;
+		body { 
+			background-color: #e6fff7; 
+		    background-image: url('static/dojocat.png');
+		    background-repeat: no-repeat;
+		    background-attachment: fixed;
+		    background-position: bottom left; 
+		    background-size: 250px;
+		}
+		#logo {
+			position: fixed;
+			height: 250px;
+			width: 250px;
 		}
 		#chat {
 			height:400px;
@@ -26,6 +36,7 @@
 		#chatHeader {
 			text-align: center;
 		}
+
 	</style>
 </head>
 
@@ -54,9 +65,10 @@
 					<input type="submit" class="form-control btn-primary"></input>
 				</form>
 			</div>
-			<div id="users"></div>
 		</div>
 	</div>
+
+	<!-- <img src="static/dojocat.png" id="logo"> -->
 
 	<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
@@ -82,14 +94,6 @@
 					}
 				});
 				$nickBox.val('');
-			});
-
-			socket.on('usernames', function(data) {
-				var html = '';
-				for (i=0; i < data.length; i++) {
-					html += data[i] + '<br/>';
-				}
-				$users.html(html);
 			});
 
 			// Submit Handler, send submit to server
