@@ -13,16 +13,17 @@ app.get('/', function(req, res) {
 });
 
 io.sockets.on('connection', function(socket) {
-  var pyshell = new PythonShell('../neural_network/classifier.py', 
-                               {pythonPath : 'python3', mode : 'text'});
-  pyshell.on('message', function(message){
-    console.log(message);
-		io.sockets.emit('new message', {msg: message, nick: socket.nickname});
-  });
+	var pyshell = new PythonShell('../neural_network/classifier.py', 
+	                           {pythonPath : 'python3', mode : 'text'});
 
-  pyshell.on('error', function(err){
-    console.log(err);
-  });
+	pyshell.on('message', function(message){
+		console.log(message);
+		io.sockets.emit('new message', {msg: message, nick: socket.nickname});
+	});
+
+	pyshell.on('error', function(err){
+		console.log(err);
+	});
 
 	socket.on('new user', function(data, callback) {
 		if (nicknames.indexOf(data) != -1) {
@@ -36,10 +37,10 @@ io.sockets.on('connection', function(socket) {
 	});
 
 	socket.on('send message', function(data) {
-    var msg = data.trim();
-    if(msg !== '') {
-      pyshell.send(msg);
-    }
+	    var msg = data.trim();
+	    if(msg !== '') {
+	      pyshell.send(msg);
+	    }
 		//io.sockets.emit('new message', {msg: data, nick: socket.nickname});
 	});
 
