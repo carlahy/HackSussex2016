@@ -1,5 +1,7 @@
 i am really happy
 happy
+i am happy
+happy
 the party was so awesome
 happy
 thanks for organizing my birthday you are the best friends i can dream of
@@ -14,7 +16,13 @@ we lost the match everybody is disappointed
 sad
 my life is pointless
 sad
-i could jump off a clif and die
+i am sad
+sad
+i want to cry
+sad
+i am crying
+sad
+i could jump off a cliff and die
 sad
 i love you
 love
@@ -86,6 +94,16 @@ it's late you won't rest today
 tired
 this week has brought so much work and stress into my life i need a holiday
 tired
+i work a lot
+tired
+i am stressed
+tired
+i am sleepy
+tired
+i want to sleep
+tired
+i am tired
+tired
 the last sparring session drained me physically
 tired
 i have been studying for so long i am ready to go to bed
@@ -110,3 +128,13 @@ i am shocked at the organisation because it is surprisingly good
 surprised
 how did they pull this off with such short notice
 surprised
+this is a surprise
+surprised
+i am shocked
+surprised
+this is cool
+surprised
+this is unexpected
+surprised
+i am unhappy
+sad
