@@ -1,40 +1,61 @@
 <html>
 <head>
 	<title>Chat with socket.io</title>
-	
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
 	<style type="text/css">
+		body {
+			background-color: #e6fff7;
+		}
 		#chat {
-			height:500px;
+			height:400px;
+			width: 400px;
 		}
 		#contentWrap {
 			display: none;
+			margin-top: 50px;
 		}
 		#chatWrap {
 			float: left;
 			border: 1px #000 solid;
 		}
+		#nickWrap {
+			text-align: center;
+			margin-top: 10em;
+		}
+		#chatHeader {
+			text-align: center;
+		}
 	</style>
 </head>
 
 <body>
-	<div id="nickWrap">
-		<p>Enter a username:</p>
-		<p id="nickError"></p>
-		<form id="setNick">
-			<input size="35px" id="nickname"></input>
-			<input type="submit"></input>
-		</form>
-	</div>
 
-	<div id="contentWrap">
-		<div id="chatWrap">
-			<div id="chat"></div>
-			<form id="send-message">
-				<input size="35px" id="message"></input>
+	<div id="nickWrap" class="row">
+		<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
+			<h1>Hello! I am a Sassy Emoji Ninja.</h1>
+			<h1>And you are?</h1>
+			<br/>
+			<p id="nickError"></p>
+			<form id="setNick" autocomplete="off">
+				<input size="35px" id="nickname"></input>
 				<input type="submit"></input>
 			</form>
 		</div>
-		<div id="users"></div>
+    </div>
+
+	<div id="contentWrap" class="row">
+		<div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4 col-xs-4 col-xs-offset-4">
+			<h1 id="chatHeader">Chat away and I will sneak up on you</h1>
+			<div id="chatWrap">
+				<div id="chat"></div>
+				<form id="send-message" autocomplete="off">
+					<input size="35px" id="message"></input>
+					<input type="submit"></input>
+				</form>
+			</div>
+			<div id="users"></div>
+		</div>
 	</div>
 
 	<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
