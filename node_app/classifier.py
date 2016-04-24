@@ -4,7 +4,7 @@ from pybrain.supervised.trainers import BackpropTrainer
 import pickle
 
 emojis = ['happy', 'sad', 'love', 'tired', 'surprised']
-unicode_vals = [0x1F600, 0x1F641, 0x2764, 0x1F629, 0x1F62F]
+unicode_vals = [0x1F600, 0x1F61E, 0x2764, 0x1F629, 0x1F62F]
 
 def getOutput(net, input_data):
   return net.activate(input_data)
