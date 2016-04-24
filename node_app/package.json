@@ -1,0 +1,23 @@
+{
+  "name": "hack-sussex",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlahy/HackSussex2016.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carlahy/HackSussex2016/issues"
+  },
+  "homepage": "https://github.com/carlahy/HackSussex2016#readme",
+  "dependencies": {
+    "express.js": "^1.0.0",
+    "socket.io": "^1.4.5"
+  }
+}
