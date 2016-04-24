@@ -4,6 +4,8 @@ var express = require('express'),
 	io = require('socket.io').listen(server),
 	nicknames = [];
 
+var PythonShell = require('python-shell');
+
 server.listen(3000);
 
 app.get('/', function(req, res) {
@@ -11,6 +13,17 @@ app.get('/', function(req, res) {
 });
 
 io.sockets.on('connection', function(socket) {
+  var pyshell = new PythonShell('../neural_network/classifier.py', 
+                               {pythonPath : 'python3', mode : 'text'});
+  pyshell.on('message', function(message){
+    console.log(message);
+		io.sockets.emit('new message', {msg: message, nick: socket.nickname});
+  });
+
+  pyshell.on('error', function(err){
+    console.log(err);
+  });
+
 	socket.on('new user', function(data, callback) {
 		if (nicknames.indexOf(data) != -1) {
 			callback(false);
@@ -23,7 +36,11 @@ io.sockets.on('connection', function(socket) {
 	});
 
 	socket.on('send message', function(data) {
-		io.sockets.emit('new message', {msg: data, nick: socket.nickname});
+    var msg = data.trim();
+    if(msg !== '') {
+      pyshell.send(msg);
+    }
+		//io.sockets.emit('new message', {msg: data, nick: socket.nickname});
 	});
 
 	function updateNicknames() {
