@@ -41,7 +41,7 @@ with open("net.p", "rb") as f:
   net = pickle.load(f)
 
 while True:
-  sentence = input()
+  sentence = input().lower()
   res = getOutput(net, sentenceToVector(sentence, dictionary)).tolist()
   i = res.index(max(res))
   print(sentence + "  " + str(chr(unicode_vals[i])))
