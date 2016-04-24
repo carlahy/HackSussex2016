@@ -36,6 +36,10 @@ def buildTrainingDataSet(inputSize, outputSize, dictionary):
       ds.addSample(senVec, emoVec)
   return ds
 
+stopwords = set()
+with open('training_data/stopwords.txt') as f:
+  for word in f.readlines():
+    stopwords.add(word[:-1])
 
 dictionary = []
 with open('training_data/training_set.txt') as f:
@@ -44,6 +48,7 @@ with open('training_data/training_set.txt') as f:
     line = line[:-1]
     for word in line.split():
       S.add(word)
+  S = S - stopwords
   dictionary = sorted(list(S))
 
 print(dictionary)
@@ -52,10 +57,9 @@ layers = [len(dictionary), len(dictionary)*2, 5]
 net = buildNetwork(*layers, bias=True)
 ds = buildTrainingDataSet(len(dictionary), len(emojis), dictionary)
 trainer = BackpropTrainer(net, ds)
-for i in range(100):
-  print("before")
+for i in range(250):
+  print(i)
   error = trainer.train()
   print(error)
-  print("after")
 with open("net.p", "wb") as f:
   pickle.dump(net, f)

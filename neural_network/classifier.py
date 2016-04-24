@@ -19,6 +19,11 @@ def sentenceToVector(sentence, dictionary):
   return result
 
 
+stopwords = set()
+with open('training_data/stopwords.txt') as f:
+  for word in f.readlines():
+    stopwords.add(word[:-1])
+
 dictionary = []
 with open('training_data/training_set.txt') as f:
   S = set()
@@ -26,13 +31,15 @@ with open('training_data/training_set.txt') as f:
     line = line[:-1]
     for word in line.split():
       S.add(word)
+  S = S - stopwords
   dictionary = sorted(list(S))
+
 
 net = None
 with open("net.p", "rb") as f:
   net = pickle.load(f)
 
-print("type your sentence")
-sentence = input()
-res = getOutput(net, sentenceToVector(sentence, dictionary))
-print(res)
+while True:
+  sentence = input()
+  res = getOutput(net, sentenceToVector(sentence, dictionary))
+  print(res)
