@@ -1,3 +1,4 @@
+console.log("hello");
 var express = require('express'),
 	app = express(),
 	server = require('http').createServer(app),
@@ -6,7 +7,7 @@ var express = require('express'),
 
 var PythonShell = require('python-shell');
 
-server.listen(3000);
+server.listen(8080);
 
 app.get('/', function(req, res) {
 	res.sendFile(__dirname + '/index.html');
