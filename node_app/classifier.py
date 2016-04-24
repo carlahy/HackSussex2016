@@ -46,4 +46,4 @@ while True:
   sentence = input().lower()
   res = getOutput(net, sentenceToVector(sentence, dictionary)).tolist()
   i = res.index(max(res))
-  print(sentence + "  " + emoji.emojize('Python is :' +  emoji_vals[i] + ':'))
+  print(sentence + "  " + emoji.emojize('Python is :'+ emoji_vals[i] + ':'))
